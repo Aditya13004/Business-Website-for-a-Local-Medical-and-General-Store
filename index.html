@@ -2,45 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aditya Medicals and General Store</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aditya Medical & General Store</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
-    <h1>Aditya Medicals and General Store</h1>
-    <p>Your health, our priority</p>
+    <div class="container">
+      <h1>Aditya Medical & General Store</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <button id="cartToggle">🛒 Cart (<span id="cartCount">0</span>)</button>
+      </nav>
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search for products..." />
+        <select id="sortSelect">
+          <option value="">Sort By</option>
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We provide medicines, general household items, and health products.</p>
+  <section class="hero">
+    <div class="container">
+      <h2>Your Health, Our Priority</h2>
+      <p>Trusted provider of genuine medicines and general items.</p>
+    </div>
   </section>
 
-  <section id="products">
-    <h2>Products</h2>
-    <ul>
-      <li>Allopathic & Ayurvedic Medicines</li>
-      <li>First Aid & Medical Supplies</li>
-      <li>Daily Essentials & Groceries</li>
-    </ul>
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Aditya Medical & General Store provides reliable healthcare products, Over-The-Counter medicines, and daily-use general items. We are known for quality service and affordable pricing.</p>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Address: Shanti 10" Vaedhaman Nagar, Jalgaon<br>Phone: 9876543210</p>
+  <section id="products" class="products">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div class="product-list" id="product-list">
+        <!-- Products will be inserted by JS -->
+      </div>
+    </div>
+  </section>
+
+  <aside id="cartPanel" class="hidden">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <p id="totalPrice">Total: ₹0.00</p>
+    <button onclick="checkout()">Checkout</button>
+  </aside>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div class="contact-details">
+        <p><strong>Phone:</strong> +91-7588662926</p>
+        <p><strong>Email:</strong> adityamedical@gmail.com</p>
+        <p><strong>Address:</strong> Near XYZ Hospital, Jalgaon, Maharashtra</p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Aditya Medicals and General Store</p>
+    <div class="container">
+      <p>&copy; 2025 Aditya Medical & General Store | All rights reserved.</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
