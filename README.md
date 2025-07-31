@@ -10,9 +10,9 @@ A modern, responsive frontend website for **Aditya Medical & General Store** bui
 - ✅ Responsive & modern UI design
 - 🛒 Add to Cart with total price calculation
 - 🔍 Live Search and Price-based Sorting
-- 📦 100+ preloaded medical & general products
 - 📬 Contact form with validation
 - 💬 Popup confirmation on item add
+
   
 
 ---
