@@ -13,7 +13,7 @@ A modern, responsive frontend website for **Aditya Medical & General Store** bui
 - 📦 100+ preloaded medical & general products
 - 📬 Contact form with validation
 - 💬 Popup confirmation on item add
-- 📱 Mobile-friendly layout
+  
 
 ---
 
