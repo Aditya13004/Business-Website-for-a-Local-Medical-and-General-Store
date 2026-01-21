@@ -6,138 +6,112 @@ This project is built to simulate a real-world pharmacy e-commerce system with A
 
 🚀 Features
 
-🛒 Product listing with images
-
-🔐 User authentication (Login / Signup)
-
-🧾 Cart management
-
-🤖 AI Medicine Recommendation System
-
-💬 Jarvis AI Chatbot for healthcare assistance
-
-📦 Backend API for data handling
-
-📊 Admin & user ready structure
-
-⚡ Fast and responsive UI
+• Product listing with images
+• User authentication (Login / Signup)
+• Cart management
+• AI medicine recommendation system
+• Jarvis AI chatbot for healthcare support
+• Backend REST APIs
+• Admin and user ready system
+• Fast and responsive UI
 
 🧠 AI Capabilities
 
-The system includes an AI engine that:
-
-Suggests medicines based on symptoms
-
-Provides health advice through chatbot
-
-Helps users find relevant products
-
-This makes it more than a normal store — it becomes a smart healthcare assistant.
+• Suggests medicines based on user symptoms
+• Provides health advice using AI chatbot
+• Helps users find the right medical products
+• Improves user experience with smart assistance
 
 🛠️ Tech Stack
 Frontend
 
-HTML5
-
-CSS3
-
-JavaScript
-
-React (Jarvis AI Chat UI)
+• HTML5
+• CSS3
+• JavaScript
+• React (Jarvis AI UI)
 
 Backend
 
-Node.js
+• Node.js
+• Express.js
 
-Express.js
+AI
 
-AI Integration
-
-OpenAI / LLM-based recommendation system
-
-JavaScript AI logic
+• OpenAI / LLM-based medicine recommendation
+• JavaScript AI logic
 
 Database
 
-MongoDB
+• MongoDB
 
 Tools
 
-VS Code
-
-GitHub
-
-Postman
+• VS Code
+• GitHub
+• Postman
 
 📁 Project Structure
 Aditya Medical Web
 │
 ├── Frontend
-│   ├── index.html
-│   ├── product pages
-│   ├── cart.js
-│   ├── auth.js
-│   └── styles
+│   – index.html
+│   – product pages
+│   – cart.js
+│   – auth.js
+│   – styles
 │
 ├── Backend
-│   ├── server.js
-│   ├── routes
-│   ├── models
-│   └── controllers
+│   – server.js
+│   – routes
+│   – models
+│   – controllers
 │
 ├── AI
-│   ├── ai-recommendations.js
-│   ├── ai-recommendations.html
-│   └── Jarvis Chatbot
+│   – ai-recommendations.js
+│   – ai-recommendations.html
+│   – Jarvis Chatbot
 │
 └── README.md
 
 ⚙️ Setup Instructions
-1️⃣ Clone Repository
+Step 1 – Clone Repository
 git clone https://github.com/yourusername/aditya-medical-web.git
 cd aditya-medical-web
 
-2️⃣ Install Backend Dependencies
+Step 2 – Install Backend Dependencies
 cd backend
 npm install
 
-3️⃣ Create .env File
+Step 3 – Create .env File
 
-Use .env.example and add:
+Add the following:
 
 MONGO_URI=your_mongodb_url
 OPENAI_API_KEY=your_api_key
 PORT=5000
 
-4️⃣ Run Backend Server
+Step 4 – Run Backend
 npm start
 
 
-Server will run on
-👉 http://localhost:5000
+Backend runs on
+http://localhost:5000
 
-5️⃣ Run Frontend
+Step 5 – Run Frontend
 
 Open index.html using Live Server or browser.
 
-🧪 Sample Use Case
+🧪 Sample Flow
 
-User logs in
+• User logs in
+• Enters symptoms
+• AI suggests medicine
+• User adds product to cart
+• Order ready
 
-Selects symptoms
+🎯 Why This Project is Special
 
-AI suggests medicine
-
-User adds to cart
-
-Order ready
-
-🎯 Why This Project is Unique
-
-Combines E-commerce + AI + Healthcare
-
-Suitable for BE Final Year Project
-
-Real-world pharmacy use case
-
-Shows full stack + AI skills
+• Combines Healthcare + AI + E-Commerce
+• Real-world medical store simulation
+• Perfect for BE Final Year Project
+• Shows full-stack + AI skills
