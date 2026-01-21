@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Consultation | Aditya Medical & General Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .consultation-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem 0;
+      min-height: 100vh;
+    }
+
+    .consultation-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .consultation-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .consultation-header h1 {
+      color: #7c3aed;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .consultation-header p {
+      font-size: 1.1rem;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .booking-form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      color: #1e293b;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .time-slot {
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .time-slot:hover {
+      border-color: #7c3aed;
+      background: #f3f4f6;
+    }
+
+    .time-slot.selected {
+      border-color: #7c3aed;
+      background: #7c3aed;
+      color: white;
+    }
+
+    .time-slot.unavailable {
+      background: #f3f4f6;
+      color: #9ca3af;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .consultation-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .consultation-type {
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .consultation-type:hover {
+      border-color: #7c3aed;
+      background: #f9fafb;
+    }
+
+    .consultation-type.selected {
+      border-color: #7c3aed;
+      background: #ede9fe;
+    }
+
+    .consultation-type h4 {
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .consultation-type p {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .consultation-price {
+      font-weight: 700;
+      color: #059669;
+      font-size: 1.1rem;
+    }
+
+    .pharmacist-info {
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 2px solid #e2e8f0;
+      margin-bottom: 2rem;
+    }
+
+    .pharmacist-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pharmacist-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .pharmacist-details h4 {
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .pharmacist-details p {
+      color: #64748b;
+      margin-bottom: 0.25rem;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+    }
+
+    .submit-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .booking-summary {
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      display: none;
+    }
+
+    .booking-summary h4 {
+      color: #1d4ed8;
+      margin-bottom: 1rem;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #dbeafe;
+    }
+
+    .summary-item:last-child {
+      border-bottom: none;
+      font-weight: 700;
+    }
+
+    .success-message {
+      background: #dcfce7;
+      border: 2px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message h3 {
+      color: #166534;
+      margin-bottom: 1rem;
+    }
+
+    .success-message p {
+      color: #15803d;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .consultation-header h1 {
+        font-size: 2rem;
+      }
+      
+      .booking-form {
+        padding: 1.5rem;
+      }
+      
+      .time-slots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .consultation-types {
+        grid-template-columns: 1fr;
+      }
+      
+      .pharmacist-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="images/Aditya Medical.png" alt="Aditya Medical Logo" />
+        <span>Aditya Medical & General Store</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="ai-recommendations.html">AI Recommendations</a>
+        <a href="consultation-booking.html" class="active">Book Consultation</a>
+        <a href="contact.html">Contact</a>
+        <button id="cartToggle">🛒 Cart (<span id="cartCount">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="consultation-section">
+    <div class="consultation-container">
+      <div class="consultation-header">
+        <h1>📅 Book Consultation</h1>
+        <p>Schedule a personalized consultation with our experienced pharmacist for expert medical advice, prescription guidance, and health recommendations.</p>
+      </div>
+
+      <!-- Pharmacist Information -->
+      <div class="pharmacist-info">
+        <h3>👨‍⚕️ Meet Our Pharmacist</h3>
+        <div class="pharmacist-card">
+          <div class="pharmacist-avatar">👨‍⚕️</div>
+          <div class="pharmacist-details">
+            <h4>Aditya Wakalkar</h4>
+            <p><strong>Qualification:</strong> B.Pharm, M.Pharm (Clinical Pharmacy)</p>
+            <p><strong>Experience:</strong> 8+ years in clinical pharmacy and patient counseling</p>
+            <p><strong>Specialization:</strong> Chronic disease management, Drug interactions, Dosage optimization</p>
+            <p><strong>Languages:</strong> English, Hindi, Marathi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form" id="bookingForm">
+        <form id="consultationBookingForm">
+          <!-- Personal Information -->
+          <div class="form-section">
+            <h3>👤 Personal Information</h3>
+            <div class="form-group">
+              <label for="patientName">Full Name *</label>
+              <input type="text" id="patientName" name="patientName" required>
+            </div>
+            <div class="form-group">
+              <label for="patientAge">Age *</label>
+              <input type="number" id="patientAge" name="patientAge" min="1" max="120" required>
+            </div>
+            <div class="form-group">
+              <label for="patientPhone">Phone Number *</label>
+              <input type="tel" id="patientPhone" name="patientPhone" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+              <label for="patientEmail">Email Address</label>
+              <input type="email" id="patientEmail" name="patientEmail">
+            </div>
+          </div>
+
+          <!-- Consultation Type -->
+          <div class="form-section">
+            <h3>💊 Consultation Type</h3>
+            <div class="consultation-types" id="consultationTypes">
+              <div class="consultation-type" data-type="general" data-price="200">
+                <h4>General Consultation</h4>
+                <p>Basic health advice, medicine information, and general queries</p>
+                <div class="consultation-price">₹200</div>
+              </div>
+              <div class="consultation-type" data-type="prescription" data-price="300">
+                <h4>Prescription Review</h4>
+                <p>Review existing prescriptions, check interactions, dosage optimization</p>
+                <div class="consultation-price">₹300</div>
+              </div>
+              <div class="consultation-type" data-type="chronic" data-price="400">
+                <h4>Chronic Disease Management</h4>
+                <p>Diabetes, hypertension, heart disease management and counseling</p>
+                <div class="consultation-price">₹400</div>
+              </div>
+              <div class="consultation-type" data-type="followup" data-price="150">
+                <h4>Follow-up Consultation</h4>
+                <p>Follow-up for previous consultations and treatment progress</p>
+                <div class="consultation-price">₹150</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date Selection -->
+          <div class="form-section">
+            <h3>📅 Select Date</h3>
+            <div class="form-group">
+              <label for="consultationDate">Preferred Date *</label>
+              <input type="date" id="consultationDate" name="consultationDate" required>
+            </div>
+          </div>
+
+          <!-- Time Selection -->
+          <div class="form-section">
+            <h3>🕒 Select Time</h3>
+            <div class="time-slots" id="timeSlots">
+              <div class="time-slot" data-time="09:00">9:00 AM</div>
+              <div class="time-slot" data-time="09:30">9:30 AM</div>
+              <div class="time-slot" data-time="10:00">10:00 AM</div>
+              <div class="time-slot" data-time="10:30">10:30 AM</div>
+              <div class="time-slot" data-time="11:00">11:00 AM</div>
+              <div class="time-slot" data-time="11:30">11:30 AM</div>
+              <div class="time-slot" data-time="12:00">12:00 PM</div>
+              <div class="time-slot" data-time="14:00">2:00 PM</div>
+              <div class="time-slot" data-time="14:30">2:30 PM</div>
+              <div class="time-slot" data-time="15:00">3:00 PM</div>
+              <div class="time-slot" data-time="15:30">3:30 PM</div>
+              <div class="time-slot" data-time="16:00">4:00 PM</div>
+              <div class="time-slot" data-time="16:30">4:30 PM</div>
+              <div class="time-slot" data-time="17:00">5:00 PM</div>
+              <div class="time-slot" data-time="17:30">5:30 PM</div>
+              <div class="time-slot" data-time="18:00">6:00 PM</div>
+            </div>
+          </div>
+
+          <!-- Health Information -->
+          <div class="form-section">
+            <h3>🩺 Health Information</h3>
+            <div class="form-group">
+              <label for="currentMedications">Current Medications</label>
+              <textarea id="currentMedications" name="currentMedications" rows="3" placeholder="List any medications you're currently taking..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="healthConcerns">Health Concerns / Reason for Consultation</label>
+              <textarea id="healthConcerns" name="healthConcerns" rows="4" placeholder="Describe your health concerns, symptoms, or questions you'd like to discuss..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="medicalHistory">Medical History</label>
+              <textarea id="medicalHistory" name="medicalHistory" rows="2" placeholder="Any chronic conditions, allergies, or relevant medical history..."></textarea>
+            </div>
+          </div>
+
+          <!-- Booking Summary -->
+          <div class="booking-summary" id="bookingSummary">
+            <h4>📋 Booking Summary</h4>
+            <div class="summary-item">
+              <span>Patient:</span>
+              <span id="summaryName">-</span>
+            </div>
+            <div class="summary-item">
+              <span>Consultation Type:</span>
+              <span id="summaryType">-</span>
+            </div>
+            <div class="summary-item">
+              <span>Date:</span>
+              <span id="summaryDate">-</span>
+            </div>
+            <div class="summary-item">
+              <span>Time:</span>
+              <span id="summaryTime">-</span>
+            </div>
+            <div class="summary-item">
+              <span><strong>Total Fee:</strong></span>
+              <span id="summaryPrice"><strong>₹0</strong></span>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            📅 Book Consultation
+          </button>
+        </form>
+      </div>
+
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <h3>✅ Consultation Booked Successfully!</h3>
+        <p><strong>Booking ID:</strong> <span id="bookingId"></span></p>
+        <p>You will receive a confirmation call within 30 minutes.</p>
+        <p>For any changes, please call +91-7588662926</p>
+        <button class="submit-btn" onclick="bookAnother()" style="margin-top: 1rem;">
+          📅 Book Another Consultation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <aside id="cartPanel" class="hidden">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <p id="totalPrice">Total: ₹0.00</p>
+    <button onclick="checkout()">Checkout</button>
+  </aside>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Aditya Medical & General Store | All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="jarvis-medicine-database.js"></script>
+  <script src="jarvis-chatbot.js"></script>
+  <script>
+    // Booking system state
+    let selectedConsultationType = null;
+    let selectedTime = null;
+    let consultationPrice = 0;
+
+    // Initialize date picker with minimum date as today
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date();
+      const todayString = today.toISOString().split('T')[0];
+      document.getElementById('consultationDate').setAttribute('min', todayString);
+      
+      // Set default date to today
+      document.getElementById('consultationDate').value = todayString;
+      
+      // Load available time slots for today
+      loadTimeSlots(todayString);
+    });
+
+    // Consultation type selection
+    document.querySelectorAll('.consultation-type').forEach(type => {
+      type.addEventListener('click', function() {
+        // Remove previous selection
+        document.querySelectorAll('.consultation-type').forEach(t => t.classList.remove('selected'));
+        
+        // Select current type
+        this.classList.add('selected');
+        selectedConsultationType = this.dataset.type;
+        consultationPrice = parseInt(this.dataset.price);
+        
+        updateBookingSummary();
+      });
+    });
+
+    // Time slot selection
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', function() {
+        if (this.classList.contains('unavailable')) return;
+        
+        // Remove previous selection
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        
+        // Select current time
+        this.classList.add('selected');
+        selectedTime = this.dataset.time;
+        
+        updateBookingSummary();
+      });
+    });
+
+    // Date change handler
+    document.getElementById('consultationDate').addEventListener('change', function() {
+      const selectedDate = this.value;
+      loadTimeSlots(selectedDate);
+      
+      // Clear time selection
+      selectedTime = null;
+      document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+      updateBookingSummary();
+    });
+
+    // Load available time slots for selected date
+    function loadTimeSlots(date) {
+      const today = new Date();
+      const selectedDate = new Date(date);
+      const currentHour = today.getHours();
+      
+      document.querySelectorAll('.time-slot').forEach(slot => {
+        const timeString = slot.dataset.time;
+        const [hours, minutes] = timeString.split(':');
+        const slotHour = parseInt(hours);
+        
+        // If it's today, disable past time slots
+        if (selectedDate.toDateString() === today.toDateString() && slotHour <= currentHour) {
+          slot.classList.add('unavailable');
+        } else {
+          slot.classList.remove('unavailable');
+        }
+        
+        // Randomly mark some slots as unavailable for demo
+        if (Math.random() < 0.2 && selectedDate.toDateString() !== today.toDateString()) {
+          slot.classList.add('unavailable');
+        }
+      });
+    }
+
+    // Update booking summary
+    function updateBookingSummary() {
+      const name = document.getElementById('patientName').value;
+      const date = document.getElementById('consultationDate').value;
+      
+      if (name || selectedConsultationType || selectedTime || date) {
+        document.getElementById('bookingSummary').style.display = 'block';
+        
+        document.getElementById('summaryName').textContent = name || '-';
+        document.getElementById('summaryType').textContent = getConsultationTypeName(selectedConsultationType);
+        document.getElementById('summaryDate').textContent = date ? formatDate(date) : '-';
+        document.getElementById('summaryTime').textContent = selectedTime ? formatTime(selectedTime) : '-';
+        document.getElementById('summaryPrice').innerHTML = `<strong>₹${consultationPrice}</strong>`;
+      }
+    }
+
+    // Helper functions
+    function getConsultationTypeName(type) {
+      const types = {
+        'general': 'General Consultation',
+        'prescription': 'Prescription Review',
+        'chronic': 'Chronic Disease Management',
+        'followup': 'Follow-up Consultation'
+      };
+      return types[type] || '-';
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-IN', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+
+    function formatTime(timeString) {
+      const [hours, minutes] = timeString.split(':');
+      const hour = parseInt(hours);
+      const ampm = hour >= 12 ? 'PM' : 'AM';
+      const hour12 = hour % 12 || 12;
+      return `${hour12}:${minutes} ${ampm}`;
+    }
+
+    // Form submission
+    document.getElementById('consultationBookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (!validateBookingForm()) {
+        return;
+      }
+      
+      // Generate booking ID
+      const bookingId = 'AMG' + Date.now().toString().slice(-6);
+      
+      // Show success message
+      document.getElementById('bookingId').textContent = bookingId;
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+      
+      // Scroll to success message
+      document.getElementById('successMessage').scrollIntoView({
+        behavior: 'smooth'
+      });
+      
+      // Here you would normally send the booking data to your backend
+      console.log('Booking submitted:', {
+        bookingId,
+        name: document.getElementById('patientName').value,
+        age: document.getElementById('patientAge').value,
+        phone: document.getElementById('patientPhone').value,
+        email: document.getElementById('patientEmail').value,
+        consultationType: selectedConsultationType,
+        date: document.getElementById('consultationDate').value,
+        time: selectedTime,
+        price: consultationPrice,
+        currentMedications: document.getElementById('currentMedications').value,
+        healthConcerns: document.getElementById('healthConcerns').value,
+        medicalHistory: document.getElementById('medicalHistory').value
+      });
+    });
+
+    // Form validation
+    function validateBookingForm() {
+      const name = document.getElementById('patientName').value;
+      const age = document.getElementById('patientAge').value;
+      const phone = document.getElementById('patientPhone').value;
+      const date = document.getElementById('consultationDate').value;
+      const concerns = document.getElementById('healthConcerns').value;
+      
+      if (!name || !age || !phone || !date || !concerns) {
+        alert('Please fill in all required fields.');
+        return false;
+      }
+      
+      if (!selectedConsultationType) {
+        alert('Please select a consultation type.');
+        return false;
+      }
+      
+      if (!selectedTime) {
+        alert('Please select a time slot.');
+        return false;
+      }
+      
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return false;
+      }
+      
+      return true;
+    }
+
+    // Update summary when form fields change
+    document.getElementById('patientName').addEventListener('input', updateBookingSummary);
+
+    // Book another consultation
+    function bookAnother() {
+      // Reset form
+      document.getElementById('consultationBookingForm').reset();
+      
+      // Reset selections
+      selectedConsultationType = null;
+      selectedTime = null;
+      consultationPrice = 0;
+      
+      // Clear selections
+      document.querySelectorAll('.consultation-type').forEach(t => t.classList.remove('selected'));
+      document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+      
+      // Hide success message and show form
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('bookingForm').style.display = 'block';
+      document.getElementById('bookingSummary').style.display = 'none';
+      
+      // Set date to today
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('consultationDate').value = today;
+      loadTimeSlots(today);
+      
+      // Scroll to form
+      document.getElementById('bookingForm').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
